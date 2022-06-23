@@ -17,7 +17,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 
-## Presentatie (intro / scope / higlights) 
+## Presentatie (intro / scope / higlights /schema DB) 
 
 [Presentatie_eindwerk.pdf](https://github.com/Ann-sophieH/eindwerk22/files/8968053/Presentatie_eindwerk.pdf)
 
@@ -32,12 +32,13 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 
 ## kostprijsberekening 
+[factuur_eindwerk.pdf](https://github.com/Ann-sophieH/eindwerk22/files/8968140/factuur_eindwerk.pdf)
 
 
 ## Login 
-- admin 
-- author
-- client 
+- admin : hermanann-sophie@hotmail.com
+- author : vanhoutte.tim@gmail.com
+- client  : vanhoutte@gmail.com
 
 wachtwoord voor elke rol: 12345678
 
