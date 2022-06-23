@@ -187,8 +187,8 @@
                                 </div>
                             </div>
                                 @else
-                                <p class="text-center fsize-1 pt-2"> you can   <button type="button" class="btn p-1 shadow-none  fs-bo text-decoration-underline" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        login here</button> if you want to leave a review for {{$product->name}}  </p>
+                                <p class="text-center fsize-1 pt-2"><a href="{{url('admin/')}}">you can
+                                        login here </a>if you want to leave a review for {{$product->name}}  </p>
                             @endif
                         </div>
                     </div>
