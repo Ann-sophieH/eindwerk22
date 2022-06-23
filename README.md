@@ -17,12 +17,27 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 
-## Presentatie (intro / scope / 
+## Presentatie (intro / scope / higlights) 
 
-[Zwart en Geel Modern Sociale Media Marketingtrends Presentatie.pdf](https://github.com/Ann-sophieH/eindwerk22/files/8968015/Zwart.en.Geel.Modern.Sociale.Media.Marketingtrends.Presentatie.pdf)
+[Presentatie_eindwerk.pdf](https://github.com/Ann-sophieH/eindwerk22/files/8968053/Presentatie_eindwerk.pdf)
+
 
 ## databasemodel 
 
 [dbtesteindwerk.pdf](https://github.com/Ann-sophieH/eindwerk22/files/8968033/dbtesteindwerk.pdf)
 
+## Projectplanning 
+
+[eindwerk _ Trello.pdf](https://github.com/Ann-sophieH/eindwerk22/files/8968066/eindwerk._.Trello.pdf)
+
+
 ## kostprijsberekening 
+
+
+## Login 
+- admin 
+- author
+- client 
+
+wachtwoord voor elke rol: 12345678
+
