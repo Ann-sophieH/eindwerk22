@@ -49,4 +49,10 @@ wachtwoord voor elke rol: 12345678
 4. php artisan key generate 
 5. renaming .env.example -> .env
 6. linking your database + php artisan migrate:fresh --seed
+7. do not forget the keys in .env file for: 
+    - github login
+    - google login
+    - mailtrap 
+    - mollie 
+
 
