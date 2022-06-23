@@ -197,25 +197,7 @@
                             <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
                         </a>
                     </div>
-                    {{--@foreach($user->addresses as $billing_address)
-                        @if($loop->iteration >= 3)
-                            <li class="list-group-item border-0 ps-0 pt-5 text-sm"><strong class="text-dark">other addresses:</strong> &nbsp;<br>
-                                {{$billing_address->name_recipient}} <br>
-                                {{$billing_address->addressline_1}} <br>
-                                {{$billing_address->addressline_2}} <br>
-                                @if($billing_address->deleted_at != null)
-                                    <a class="btn btn-link text-dark px-3 mb-0" href="{{route('addresses.restore',$address->id)}}"><i class="material-icons text-sm me-2">restore</i>Restore</a>
-                                @else
-                                <form method="POST"
-                                      action="{{action("App\Http\Controllers\AdminAddressesController@destroy", $billing_address->id)}}">
-                                @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-link text-danger text-gradient px-3 mb-0" type="submit"><i class="material-icons text-xxs me-2">delete</i>Delete</button>
-                                </form>
-                                @endif
-                            </li>
-                        @endif
-                    @endforeach--}}
+
                 </div>
             </div>
 
@@ -245,7 +227,7 @@
                             </div>
                             <div class="card-body p-3">
                                 <p class="mb-0 text-sm">Order # {{$order->id}} </p>
-                                <a href="javascript:;">
+                                <a href="javascript:">
                                     <h5>
                                         {{$item->product->name}}
                                     </h5>

@@ -38,22 +38,15 @@ class FrontendController extends Controller
     public function blog(){
         $posts = Post::with(['photos', 'category', 'user'])->filter(request(['search']))->paginate(10); //
         $sticky_post = Post::with(['photos', 'category', 'user'])->where('sticky', 1)->get()->last();
-     // dd($sticky_post);
         return view('blog', compact('posts', 'sticky_post'));
     }
     public function blogpost(Post $post){
-        // $post =Post::findOrFail($id);
         $post->load(['postcomments.user']);
-        $comments = Comment::with([ 'user','post','childcomments',  ])->whereNull('parent_id')->where('post_id',$post->id )->paginate(10);
-
-     //   $replies = Comment::with([ 'user','post','childcomments' ])->where('parent_id', $id)->paginate(10);
+        $comments = Comment::with([ 'user','post','childcomments' ])->whereNull('parent_id')->where('post_id',$post->id )->paginate(10);
 
         return view('blogpost', compact('post', 'comments'));
     }
-/*    public function products(){
 
-        return view('products');
-    }*/
     public function faq(){
 
         return view('faq');
@@ -62,11 +55,9 @@ class FrontendController extends Controller
         $subscriber = new Newsletter();
         $request->validate([
             'email' => 'required|email|unique:newsletters',
-
         ],
             $messages = [
                 'email.required' => 'Give us a correct email for exciting offers!',
-
             ]
         );
         $subscriber->email = $request->email;
@@ -80,7 +71,6 @@ class FrontendController extends Controller
     }
     public function details(Product $product){
         $product->load(['reviews.user']);
-       // $specs = $product->specifications()->with( 'childspecs')->get();
         $specs = $product->specifications()->whereNull('parent_id')->with( 'childspecs')->get();
         $product->with('reviews.user', 'reviews','reviews.user.photos');
 
@@ -101,13 +91,11 @@ class FrontendController extends Controller
         $cart = $cart->products;
 
         /** get user + addresses + delivery date  **/
-
             $user = Auth::user();
             $delivery_addresses = Auth::user()->addresses->where('address_type' , 1 )->take(5);
             $facturation_addresses = Auth::user()->addresses->where('address_type' , 2 )->take(5);
 
         $delivery_date = Carbon::now()->addWeekdays(5)->format('l, d F, Y');
-
 
         return view('checkout', compact('cart', 'user', 'delivery_addresses', 'facturation_addresses' , 'delivery_date'));
     }
@@ -140,7 +128,6 @@ class FrontendController extends Controller
                         'name_recipient.required' => 'We need to know which person to send your package to!',
                         'addressline_1.required' => 'We need to know which address to send your package to!',
                         'addressline_2.required' => 'We need to know which address to send your package to!',
-
                     ]
                 );
                 $address = new Address();
@@ -153,9 +140,8 @@ class FrontendController extends Controller
             }
                 /** new order  **/
                 $order = new Order();
-                //if they add a new address it will be shipped there
+                //if they type a new address it will be shipped there
             if($request['name_recipient'] && $request['addressline_1'] && $request['addressline_2']){
-             //   dd($user->addresses()->where('address_type', 1)->latest()->first()->id);
                 $address_id = $user->addresses()->where('address_type', 1)->latest()->first()->id;
                 $order->address_id = $address_id;
             }else{                //if they select an exisiting address it will be shipped there
@@ -209,21 +195,13 @@ class FrontendController extends Controller
                     $faddress->save();
                     $user->addresses()->sync($address->id, false);
                     $user->addresses()->sync($faddress->id, false);
-
                 }
-
         }
-
         return redirect($payment->getCheckoutUrl(), 303);//to payment
     }
     public function paymentSuccess() {
-        //echo 'payment has been received';
-        //$payment = Mollie::api()->payments()->get($payment->id);
-        //dd( Mollie::api()->payments());
-        //Session::flash('payment_message', 'Your order has been placed successfully, we will start packing soon!');
 
         return redirect('/received');
     }
-
 
 }

@@ -65,7 +65,7 @@
                                         </div>
                                     </td>
                                     <td class="align-middle text-center">
-                                        <span class="badge badge-sm  text-secondary text-xxs font-weight-bold">{{$comment->body}}</span>
+                                        <span class="badge badge-sm  text-secondary text-xxs font-weight-bold">{{Str::limit($comment->body)}}</span>
                                     </td>
 
 

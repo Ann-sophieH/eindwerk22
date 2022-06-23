@@ -57,12 +57,15 @@ class AdminPostsController extends Controller
         $request->validate([
             'title' => 'required',
             'category' => 'required',
-            'body' => 'required'
+            'body_long' => 'required',
+            'body_short' => 'required',
+
+
         ], $messages = [
             'title.required'=>'Title is required',
             'categories.required'=>'Category name is required',
             'photo_id.required'=>'Adding a photo required',
-            'body.required'=>'a body text is required'
+            'body_long.required'=>'a body text is required'
         ]
         );
         $post = new Post();
@@ -70,7 +73,9 @@ class AdminPostsController extends Controller
         $post->slug = Str::slug($post->title, '-');
         $post->body_long = $request->body_long;
         $post->body_short = $request->body_short;
-        $post->category_id = $request->category_id;
+        $post->active = 1;
+
+        $post->category_id = $request->category;
         $slug = Str::slug($request->title, '-');
         $post->slug = $slug ;
         if( $request->sticky){
@@ -156,6 +161,8 @@ class AdminPostsController extends Controller
         $post->title = $request->title;
         $post->slug = Str::slug($post->title, '-');
         $post->body_long = $request->body_long;
+        $post->active = 1;
+
         $post->body_short = $request->body_short;
         if( $request->sticky){
             $post->sticky = $request->sticky;
@@ -214,7 +221,6 @@ class AdminPostsController extends Controller
     public function restore($id){
 
         $post = Post::withTrashed()->findOrFail($id);
-
         $this->authorize('restore', $post);
 
         Post::onlyTrashed()->where('id', $id)->restore();

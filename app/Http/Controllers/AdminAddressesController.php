@@ -34,7 +34,6 @@ class AdminAddressesController extends Controller
     public function create($id)
     {
         $user = Auth::user();
-
         $this->authorize('create',  $user);
 
         $user = User::findOrFail($id);

@@ -50,14 +50,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             @if(!Auth::user()->isClient())
-<!--            <li class="nav-item">
-                <a class="nav-link text-white active bg-gradient-primary" href="{{url('admin/')}}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">dashboard</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
-                </a>
-            </li>-->
+
 
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">E-commerce </h6>
@@ -351,69 +344,6 @@
 
 
     @yield('content')
-    {{--        cards w charts--}}
-    <!--        <div class="row mt-4">
-            <div class="col-lg-4 col-md-6 mt-4 mb-4">
-                <div class="card z-index-2 ">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                            <div class="chart">
-                                <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="mb-0 ">Website Views</h6>
-                        <p class="text-sm ">Last Campaign Performance</p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex ">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm"> campaign sent 2 days ago </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mt-4 mb-4">
-                <div class="card z-index-2  ">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
-                            <div class="chart">
-                                <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="mb-0 "> Daily Sales </h6>
-                        <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales. </p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex ">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm"> updated 4 min ago </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mt-4 mb-3">
-                <div class="card z-index-2 ">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-                            <div class="chart">
-                                <canvas id="chart-line-tasks" class="chart-canvas" height="170"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="mb-0 ">Completed Tasks</h6>
-                        <p class="text-sm ">Last Campaign Performance</p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex ">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm">just updated</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
 
 
         <footer class="footer pt-5  bottom-0 ">
@@ -425,21 +355,17 @@
                                 document.write(new Date().getFullYear())
                             </script>,
                             created with <i class="fa fa-heart"></i> by
-                            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Anso</a>
+                            <a href="" class="font-weight-bold" target="_blank">Anso</a>
                             for a better web.
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+
                             <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Template from creative Tim</a>
+                                <a href="" class="nav-link text-muted" target="_blank">About Us</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
                             </li>

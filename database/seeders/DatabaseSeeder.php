@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
             OrderdetailsTableSeeder::class,
             PhotosTableSeeder::class,
             PostsTableSeeder::class,
+            CommentsTableSeeder::class,
+
 
 
 

@@ -38,39 +38,36 @@
                         <div class="row ">
                             <div class="col-10 mx-auto mb-3">
                                 <div class="input-group input-group-dynamic mt-3">
-                                    <label class="form-label" for="name">post name:</label>
+                                    <label class="form-label" for="title">post name:</label>
                                     <input class=" form-control" type="text" onfocus="focused(this)"
-                                           onfocusout="defocused(this)" control-id="ControlID-2" id="name" name="name">
+                                           onfocusout="defocused(this)" control-id="ControlID-2" id="title" name="title">
+                                </div>
+                                <div class="form-group mt-4">
+                                    <label for="body_short">Post body short:</label>
+                                    <textarea type="text" class="form-control border ps-2 " id="body_short" name="body_short" ></textarea>
+                                </div>
+                                <div class="form-group mt-4">
+                                    <label for="body_long">Post body long:</label>
+                                    <textarea type="text" class="form-control border ps-2" id="body_long" name="body_long" ></textarea>
                                 </div>
 
-                                <div class="input-group input-group-dynamic mt-4">
-                                    <label class="form-label" for="details">post description: add rich text
-                                        editor!</label>
-                                    <input class=" form-control" type="text" onfocus="focused(this)"
-                                           onfocusout="defocused(this)" control-id="ControlID-2" id="details"
-                                           name="details">
-                                </div>
                                 <div class="row  d-flex mt-5">
-                                    <div class="col form-group ">
-
-
-
-
-                                    </div>
-                                    <div class="form-group col ">
-
+                                    <div class="form-group mt-4">
+                                        <label for="blockquote">Post blockquote (optional) :</label>
+                                        <input type="text" class="form-control border ps-2 " id="blockquote" name="blockquote" placeholder="post blockquote...">
                                     </div>
                                 </div>
                                 <div class="form-group col-6 ps-4">
                                     <label class="col  form-label" for="category">Kind of post: </label>
-                                    <div class="form-check " id="category" multiple>
+                                    <div class="form-check " id="category"  >
                                         @foreach($categories as $category)
-                                            <input class="form-check-input" type="radio" name="category"
-                                                   value="{{$category->id}}" id="flexRadio{{$category->id}}">
-                                            <label class="form-check-label " for="flexRadio{{$category->id}}">
+                                            <input class="form-check-input" type="radio" name="category" value="{{$category->id}}" id="flexRadio{{$category->id}}"
+                                                 >
+                                            <label class="form-check-label" for="flexRadio{{$category->id}}">
                                                 {{$category->name}}
                                             </label>
                                         @endforeach
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="row  mt-5">

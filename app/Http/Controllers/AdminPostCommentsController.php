@@ -21,7 +21,7 @@ class AdminPostCommentsController extends Controller
         $this->authorize('viewAny', $user);
 
         //$comments = Comment::with([ 'user','post','childcomments' ])->whereNull('parent_id')->paginate(10);
-        $comments = Comment::with([ 'user','post','childcomments' ])->paginate(10);
+        $comments = Comment::with([ 'user','post','childcomments' ])->orderBy('id', 'desc')->paginate(10);
        // $comments = Comment::with(['user', 'post'])->latest()->paginate(10);
         return view('admin.comments.index', compact( 'comments'));
     }
