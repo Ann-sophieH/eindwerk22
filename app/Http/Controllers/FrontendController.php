@@ -126,9 +126,7 @@ class FrontendController extends Controller
             ],
             'description' => 'Payment to BV Bing & Olufson ',
             'redirectUrl' => route('payment.success'), // after the payment completion where you to redirect
-           /* "metadata" => [
-                "order_id" => "12345"
-            ],*/
+
         ]);
         if ($payment->id != null ) { //$payment->id == transaction code
                 $user = Auth::user();
@@ -203,74 +201,16 @@ class FrontendController extends Controller
                         'faddressline_2.required' => 'We need to know which address to send your package to!',
 
                     ]);
-                   // $address = new Address();
-                    $address->name_recipient = $request['fname_recipient'];
-                    $address->addressline_1 = $request['faddressline_1'];
-                    $address->addressline_2 = $request['faddressline_2'];
-                    $address->address_type = 2;
-                    $address->save();
+                    $faddress = new Address();
+                    $faddress->name_recipient = $request['fname_recipient'];
+                    $faddress->addressline_1 = $request['faddressline_1'];
+                    $faddress->addressline_2 = $request['faddressline_2'];
+                    $faddress->address_type = 2;
+                    $faddress->save();
                     $user->addresses()->sync($address->id, false);
-                }
+                    $user->addresses()->sync($faddress->id, false);
 
-          /**   in case we add 'continue as guest' in later fase -> if != auth  create account from form **/
-                /** create new user from form **/
-               /* $request->validate([
-                    'username' => 'string|max:255',
-                    'first_name' => 'required|string|max:255',
-                    'last_name' => 'required|string|max:255',
-                    'telephone' => 'max:15',//not unique cause homephone
-                    'email' => 'required|email|unique:users',
-                    'password' => 'required',
-                    'name_recipient' => 'required|string|max:255',
-                    'addressline_1' => 'required|string|max:255',
-                    'addressline_2' => 'required|string|max:255',
-                ]);
-                $user = new User();
-                $user->username = $request->username;
-                $user->first_name = $request->first_name;
-                $user->last_name = $request->last_name;
-                $user->email = $request->email;
-                $user->telephone = $request->telephone;
-                $user->password = Hash::make($request['password']);
-                $user->is_active = 1;
-                $user->save();
-                auth()->login($user);*/
-                /** save delivery address **/
-               /* $address = new Address();
-                $address->name_recipient = $request['name_recipient'];
-                $address->addressline_1 = $request['addressline_1'];
-                $address->addressline_2 = $request['addressline_2'];
-                // $address->address_type = 1; default value
-                $address->save();
-                $user->addresses()->sync($address->id, false);*/
-                /** save facturation address **/
-               /* if ($request['fname_recipient'] && $request['faddressline_1'] && $request['faddressline_2']) {
-                    $address = new Address();
-                    $address->name_recipient = $request['fname_recipient'];
-                    $address->addressline_1 = $request['faddressline_1'];
-                    $address->addressline_2 = $request['faddressline_2'];
-                    $address->address_type = 2;
-                    $address->save();
-                    $user->addresses()->sync($address->id, false);
-                }*/
-                /**save order of new user **/
-                /** new order  **/
-                /*$order = new Order();
-                $order->user_id = $user->id;
-                $order->transaction_code = $payment->id ;
-                $order->save();*/
-                /** save orderdetails for order  **/
-               /* $cart = $cart->products;
-                foreach ($cart as $item) {
-                    $orderdetail = new Orderdetail();
-                    $orderdetail->order_id = $order->id;
-                    $orderdetail->product_id = $item['product_id'];
-                    $orderdetail->product_price = $item['product_price'];
-                    $orderdetail->amount = $item['quantity'];
-                    $orderdetail->save();
-                }*/
-                /** empty cart **/
-/*                Session::forget('cart');//flushes all sessions why not only cart*/
+                }
 
         }
 

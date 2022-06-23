@@ -290,14 +290,15 @@
 
                             <ul class="list-group list-group-flush ">
                                 <hr>
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 ">
-                                    Products
-                                    <span>&#8364; {{Session::get('cart') ? Session::get('cart')->totalPrice    : '0'}}</span>
-                                </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center  px-0">
                                     Coupon
                                     <span>  @if(Session::get('coupon') ) 	&#x25; @endif {{Session::get('coupon') ? Session::get('coupon')->discount : 'No coupon'}}</span>
                                 </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 ">
+                                    Products
+                                    <span>&#8364; {{Session::get('cart') ? Session::get('cart')->totalPrice    : '0'}}</span>
+                                </li>
+
                                 <li class="list-group-item d-flex justify-content-between align-items-center  px-0">
                                     Shipping
                                     <span>Free</span>
