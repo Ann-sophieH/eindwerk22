@@ -208,7 +208,7 @@ class AdminUsersController extends Controller
         }
 
         Session::flash('user_message', $user->username . ' was edited!');
-        return redirect('/admin/users');
+        return redirect()->back();
     }
     public function changestatus(Request $request, $id){
         $user = User::findOrFail($id);

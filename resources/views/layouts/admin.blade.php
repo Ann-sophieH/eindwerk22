@@ -1,17 +1,4 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v3.0.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,8 +35,10 @@
         <a class=" p-3 m-2 " href="{{route('users.show', Auth::user()->id)}}" >
             @if((Auth::user()->photos)->isNotEmpty())
                 @foreach(Auth::user()->photos as $photo)
+                    @if($loop->first)
                     <img style="height: 45px" class="  rounded-circle ms-2 me-2" src="{{ empty($photo) ? 'http://via.placeholder.com/62x62' : asset($photo->file) }}" alt="{{Auth::user()->username}}">
-                @endforeach
+                @endif
+                        @endforeach
             @else
                 <img style="height: 45px" class=" img-fluid rounded-circle ms-2 me-2" src="http://via.placeholder.com/62x62" alt="{{Auth::user()->username}}">
             @endif

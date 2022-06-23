@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Addresstype;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class AdminAddressesController extends Controller
@@ -18,6 +19,8 @@ class AdminAddressesController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        $this->authorize('viewAny', $user);
         $users = User::all();
         $addresses = Address::with(['users'])->withTrashed()->filter(request(['search']))->paginate(25);
         return view('admin.addresses.index', compact('addresses', 'users' ));
@@ -30,7 +33,12 @@ class AdminAddressesController extends Controller
      */
     public function create($id)
     {
+        $user = Auth::user();
+
+        $this->authorize('create',  $user);
+
         $user = User::findOrFail($id);
+
         return view('admin.addresses.create', compact('user') );
     }
 

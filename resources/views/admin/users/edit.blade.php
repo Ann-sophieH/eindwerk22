@@ -88,10 +88,7 @@
                                     {!! Form::label('addressline_2', 'City + postalcode') !!}
                                     {!! Form::text('addressline_2',  $user_address->addressline_2, ['class'=>'form-control  border']) !!}
                                 </div>
-                                <div class="form-group">
-                                    {!! Form::label('email', 'Email') !!}
-                                    {!! Form::text('email', $user->email, ['class'=>'form-control  border']) !!}
-                                </div>
+
                                 <div class="form-group">
                                     {!! Form::label('telephone', 'Phone') !!}
                                     {!! Form::text('telephone',  $user->telephone, ['class'=>'form-control  border']) !!}

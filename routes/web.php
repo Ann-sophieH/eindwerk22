@@ -72,8 +72,6 @@ Route::group(['prefix' => 'admin', 'middleware'=> 'admin'], function (){
     Route::get('users/edit/{user}', 'App\Http\Controllers\AdminUsersController@edit')->name('users.edit');
     Route::post('users/changestatus/{user}', 'App\Http\Controllers\AdminUsersController@changestatus')->name('users.status');
 
-    Route::resource('addresses', App\Http\Controllers\AdminAddressesController::class);
-    Route::get('addresses/restore/{address}', 'App\Http\Controllers\AdminAddressesController@restore')->name('addresses.restore');
 
     /** E-commerce access **/
     Route::get('products/restore/{product}', 'App\Http\Controllers\AdminProductsController@restore')->name('products.restore');
@@ -102,6 +100,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'verified']], function (
     Route::get('users/roles/{id}', '\App\Http\Controllers\AdminUsersController@usersPerRole')->name('admin.usersPerRole');
     Route::get('users/edit/{user}', 'App\Http\Controllers\AdminUsersController@edit')->name('users.edit');//can only edit OWN
     Route::get('users/show/{user}', 'App\Http\Controllers\AdminUsersController@show')->name('users.show');//can only view OWN
+    //both clients and authors can only access/ edit/ create OWN addresses
+    Route::resource('addresses', App\Http\Controllers\AdminAddressesController::class);
+    Route::get('addresses/restore/{address}', 'App\Http\Controllers\AdminAddressesController@restore')->name('addresses.restore');
+    Route::get('addresses/create/{user}', 'App\Http\Controllers\AdminAddressesController@create')->name('addresses.create');
+
     /** E-commerce : policies to make sure guests so not access these routes **/
 
     Route::resource('products', App\Http\Controllers\AdminProductsController::class);

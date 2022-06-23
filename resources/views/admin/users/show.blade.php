@@ -23,8 +23,9 @@
             <div class="avatar avatar-xl position-relative ">
                 @if(($user->photos)->isNotEmpty())
                     @foreach($user->photos as $photo)
-
+                        @if($loop->first)
                         <img style="height: 62px" class=" img-fluid rounded-circle ms-2 me-2" src="{{ empty($photo) ? 'http://via.placeholder.com/62x62' : asset($photo->file) }}" alt="{{$user->username}}">
+                        @endif
                     @endforeach
                 @else
                     <img style="height: 62px" class=" img-fluid rounded-circle ms-2 me-2" src="http://via.placeholder.com/62x62" alt="{{$user->username}}">
@@ -148,12 +149,13 @@
                         </li>
 
                         @endforeach
+                        @if(!Auth::user()->isClient())
                         <button class="btn">
                             <a href="{{route('addresses.create', $user->id)}}" class="text-center" >
                                     <i class="material-icons icon-sm pt-1">add</i> billing/delivery address
                             </a>
                         </button>
-
+                            @endif
                     </div>
                 </div>
             </div>
@@ -165,8 +167,9 @@
                     </div>
                     <div class="row row-cols-4 g-2 mt-2">
                         @if(($user->photos)->isNotEmpty())
+                            <div class="d-flex">
                             @foreach($user->photos as $photo)
-                                <div class="d-flex">
+
                                 <form method="post" action="{{route('photos.destroy', $photo)}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')
@@ -174,8 +177,9 @@
                                             class="fa fa-close "></i></button>
                                 </form>
                                 <img  class=" img-fluid  ms-2 me-2" src="{{ empty($photo) ? 'http://via.placeholder.com/62x62' : asset($photo->file) }}" alt="{{$user->username}}">
-                                </div>
+
                             @endforeach
+                            </div>
                         @else
                             <img  class=" img-fluid  ms-2 me-2" src="http://via.placeholder.com/62x62" alt="{{$user->username}}">
 
