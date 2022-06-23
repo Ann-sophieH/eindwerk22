@@ -42,3 +42,11 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 wachtwoord voor elke rol: 12345678
 
+## Setup
+1. git clone
+2. npm install
+3. composer install 
+4. php artisan key generate 
+5. renaming .env.example -> .env
+6. linking your database + php artisan migrate:fresh --seed
+
