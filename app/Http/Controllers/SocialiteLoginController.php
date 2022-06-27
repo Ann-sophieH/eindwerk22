@@ -45,7 +45,7 @@ class SocialiteLoginController extends Controller
             ]
         );
         auth()->login($user);
-        return redirect(Request::session()->get('url.intended') ?? '/admin') ;
+        return redirect( '/admin') ;
 
 
 
@@ -69,7 +69,7 @@ class SocialiteLoginController extends Controller
             ]
         );
         auth()->login($user);
-        return redirect(Request::session()->get('url.intended') ?? '/admin') ;
+        return redirect( '/admin') ;
 
     }
 

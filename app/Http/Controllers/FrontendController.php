@@ -36,13 +36,13 @@ class FrontendController extends Controller
         return view('index', compact('carr_products'));
     }
     public function blog(){
-        $posts = Post::with(['photos', 'category', 'user'])->filter(request(['search']))->paginate(10); //
+        $posts = Post::with(['photos', 'category', 'user', ])->filter(request(['search']))->paginate(10); //
         $sticky_post = Post::with(['photos', 'category', 'user'])->where('sticky', 1)->get()->last();
         return view('blog', compact('posts', 'sticky_post'));
     }
     public function blogpost(Post $post){
         $post->load(['postcomments.user']);
-        $comments = Comment::with([ 'user','post','childcomments' ])->whereNull('parent_id')->where('post_id',$post->id )->paginate(10);
+        $comments = Comment::with([ 'user','post','childcomments',  'childcomments.user'])->whereNull('parent_id')->where('post_id',$post->id )->paginate(10);
 
         return view('blogpost', compact('post', 'comments'));
     }

@@ -19,7 +19,7 @@ class AdminSpecificationsController extends Controller
     public function index()
     {
         //N+1 problem not solvable cause calling on products relation within page
-        $specs = Specification::with([ 'products','childspecs' ])->whereNull('parent_id')->withTrashed()->paginate(10);
+        $specs = Specification::with([ 'products','childspecs', 'products.specifications' ])->whereNull('parent_id')->withTrashed()->paginate(10);
         //$specs->load(['products.specifications', 'childspecs.products']);
         //$sub_specs = Specification::with([ 'products','childspecs', 'specs'])->withTrashed()->whereNotNull('parent_id')->paginate(10);
 

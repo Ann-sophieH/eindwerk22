@@ -90,10 +90,8 @@
                                             @endif
                                             <a class="btn text-warning" type='submit'
                                                href="{{route('blogpost', $comment->post)}} "><i
-                                                    class="fa fa-eye mt-3"></i></a>
-<!--
-                                            <a href="{{route('comments.show', $comment->id)}}" class="btn text-success pt-3 mr-1">Full Discussion <i class="material-icons ">arrow_right_alt</i></a>
--->
+                                                    class="fa fa-eye mt-3"></i>
+                                            </a>
 
                                         </form>
                                     </td>

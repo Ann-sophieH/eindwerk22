@@ -33,7 +33,6 @@
                     <h6 class="text-center mb-0">All users</h6>
                     <hr class="horizontal dark ">
                     <span class="text-xs">See all users without filters</span>
-                    <p>add active users toggle here!!</p>
                 </div>
             </a>
         </div>

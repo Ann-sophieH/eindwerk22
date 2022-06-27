@@ -95,14 +95,21 @@
                     <span class="nav-link-text ms-1">Photos</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-white " href="{{url('admin/posts')}}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">post_add</i>
+                <li class="nav-item">
+                    <a class="nav-link text-white "  data-bs-toggle="collapse" href="#sidebar-blog" aria-expanded="false" aria-controls="sidebar-blog">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">post_add </i>
+                        </div>
+                        <span class="nav-link-text ms-1">Blogposts</span>
+                    </a>
+                    <div class="collapse" id="sidebar-blog">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item ps-3"> <a class="nav-link text-white  p-2" href="{{url('admin/posts')}}"><b>All posts</b></a></li>
+                            <li class="nav-item ps-5  "> <a class="nav-link text-white p-2" href="{{route('posts.create')}}"><i class="icon-xxs material-icons pe-2" style="font-size: 1.2rem">add</i>new product</a></li>
+
+                        </ul>
                     </div>
-                    <span class="nav-link-text ms-1">Blogposts</span>
-                </a>
-            </li>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{url('admin/comments')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
