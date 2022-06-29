@@ -27,6 +27,9 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 [dbtesteindwerk.pdf](https://github.com/Ann-sophieH/eindwerk22/files/8968033/dbtesteindwerk.pdf)
  structuur:[dbtesteindwerk (3).pdf](https://github.com/Ann-sophieH/eindwerk22/files/9014443/dbtesteindwerk.3.pdf)
 
+ schema :  [dbtesteindwerkSCHEMA.pdf](https://github.com/Ann-sophieH/eindwerk22/files/9014478/dbtesteindwerkSCHEMA.pdf)
+
+
 
 ## Projectplanning 
 
