@@ -31,22 +31,19 @@ class Products extends Component
 
     ];
     public function searchProduct($searchbar){
-     //   dd($searchbar);
+
         $this->search = $searchbar;
     }
-    public function addToCart( $id){
+   public function addToCart( $id){
         $product = Product::with(['specifications', 'colors', 'category', 'photos'])->where('id', $id)->first();
         $oldCart = Session::has('cart') ? Session::get('cart'): null;
         $cart = new Cart($oldCart);
         $cart->addItem($product, $id);
         $this->emit('productAdded');
         Session::flash('cart_message',  $product->name .'  has been added to the cart successfully!');//
-
         Session::put('cart',$cart);
         //return redirect()->back();
     }
-
-
 
     public function mount(): void
     {

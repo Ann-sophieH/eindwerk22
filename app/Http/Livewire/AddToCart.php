@@ -12,24 +12,15 @@ class AddToCart extends Component
     public $product;
 
     public function addToCart(){
-
-
         $product = Product::with(['specifications', 'colors', 'category', 'photos'])->where('id', $this->product->id)->first();
         $oldCart = Session::has('cart') ? Session::get('cart'): null;
         $cart = new Cart($oldCart);
         $cart->addItem( $this->product, $product->id);
         Session::flash('cart_message',  $this->product->name . ' has been added to your cart successfully!');//
-
         $this->emit('productAdded');
-
         Session::put('cart',$cart);
-
-        //dd($cart);
-
       //  return redirect()->back();
-
     }
-
     public function render()
     {
         return <<<'blade'

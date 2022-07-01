@@ -29,17 +29,10 @@ Route::get('login/github/callback', [SocialiteLoginController::class, 'handleGit
 Route::get('/login/google', [SocialiteLoginController::class, 'redirectToGoogle']);
 Route::get('/login/google/callback', [SocialiteLoginController::class, 'handleGoogleCallback']);
 
-//Route::get('/blog', 'App\Http\Controllers\FrontendController@blog')->name('blog ');
 /** contact **/
 Route::get('/contact', 'App\Http\Controllers\ContactController@contact')->name('contact');
 Route::get('/contactformulier', 'App\Http\Controllers\ContactController@create');
 Route::post('/contactformulier', 'App\Http\Controllers\ContactController@store');
-/** product pages  **/
-//Route::get('/products', 'App\Http\Controllers\FrontendController@products')->name('products');
-//Route::get('/speakers', 'App\Http\Controllers\FrontendController@speakers')->name('speakers');
-//Route::get('/speakers/type/{type:slug}', '\App\Http\Controllers\FrontendController@speakersPerType')->name('speakersPerType');
-//Route::get('/headphones', 'App\Http\Controllers\FrontendController@headphones')->name('headphones');
-//Route::get('/headphones/type/{type:slug}', '\App\Http\Controllers\FrontendController@headphonesPerType')->name('headphonesPerType');
 
 Route::get('/products/{product:slug}', 'App\Http\Controllers\FrontendController@details')->name('details');
 Route::get('/products', Products::class)->name('products');
@@ -53,7 +46,7 @@ Route::get('/blog/{post:slug}', '\App\Http\Controllers\FrontendController@blogpo
 /** cart **/
 Route::get('/cart', '\App\Http\Controllers\FrontendController@cart' )->name('cart');
 /** coupon code **/
-Route::post('/discount/', 'App\Http\Controllers\AdminCouponController@coupon');
+Route::post('/discount/', '\App\Http\Controllers\AdminCouponsController@coupon');
 /** payment **/
 Route::post('/checkout', 'App\Http\Controllers\FrontendController@order')->name('pay.order');
 Route::get('/received', 'App\Http\Controllers\FrontendController@orderReceived')->name('orderReceived');
@@ -78,14 +71,8 @@ Route::group(['prefix' => 'admin', 'middleware'=> 'admin'], function (){
     Route::get('products/delete/{product}', 'App\Http\Controllers\AdminProductsController@delete')->name('products.delete');
     Route::get('colors/restore/{id}', 'App\Http\Controllers\AdminColorsController@restore')->name('colors.restore');
     Route::get('specifications/restore/{id}', 'App\Http\Controllers\AdminSpecificationsController@restore')->name('specifications.restore');
-
-  //  Route::resource('roles', \App\Http\Controllers\AdminRolesController::class);
-
-   // Route::resource('colors', App\Http\Controllers\AdminColorsController::class);
-    //Route::get('colors/restore/{id}', 'App\Http\Controllers\AdminColorsController@restore')->name('colors.restore');
-
-    //Route::resource('specifications', App\Http\Controllers\AdminSpecificationsController::class);
-    //Route::get('specifications/restore/{id}', 'App\Http\Controllers\AdminSpecificationsController@restore')->name('specifications.restore');
+    Route::resource('coupons', \App\Http\Controllers\AdminCouponsController::class);
+    Route::get('coupons/restore/{id}', 'App\Http\Controllers\AdminSpecificationsController@restore')->name('coupons.restore');
 
 });
 /**  **/

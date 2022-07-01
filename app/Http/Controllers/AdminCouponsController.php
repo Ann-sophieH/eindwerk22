@@ -6,7 +6,7 @@ use App\Models\Coupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class AdminCouponController extends Controller
+class AdminCouponsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class AdminCouponController extends Controller
     {
         //
         $coupons = Coupon::withTrashed()
-            ->latest()
-            ->paginate(5);
+            ->filter(request(['search']))
+            ->paginate(10);
         return view('admin.coupons.index', compact('coupons'));
     }
 
@@ -43,13 +43,24 @@ class AdminCouponController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'code' => 'required|unique:coupons',
+            'discount' => 'required|integer',
+            'description' => 'required',
+        ], $messages = [
+            'code.required' => 'We need to know what code you want to make!',
+            'discount.required' => 'We need to know how much % discount (in numbers) you want to offer!',
+
+        ]);
         $coupon = new coupon();
         $coupon->description = $request->description;
         $coupon->code = $request->code;
         $coupon->discount = $request->discount;
 
         $coupon->save();
-        return redirect('/admin/coupons');
+        Session::flash('coupon_message', 'coupon was saved!');
+
+        return redirect()->back();
     }
 
     /**
@@ -73,6 +84,9 @@ class AdminCouponController extends Controller
     public function edit($id)
     {
         //
+        $coupon = Coupon::findOrFail($id);
+        return view('admin.coupons.edit', compact( 'coupon'));
+
     }
 
     /**
@@ -85,6 +99,24 @@ class AdminCouponController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'code' => 'required',
+            'discount' => 'required|integer',
+            'description' => 'required',
+        ], $messages = [
+            'code.required' => 'We need to know what code you want to make!',
+            'discount.required' => 'We need to know how much % discount (in numbers) you want to offer!',
+
+        ]);
+        $coupon = Coupon::findOrFail($id);
+        $coupon->description = $request->description;
+        $coupon->code = $request->code;
+        $coupon->discount = $request->discount;
+
+        $coupon->update();
+        Session::flash('coupon_message', $coupon->name . ' was edited and saved!');
+        return redirect('/admin/coupons/');
+
     }
 
     /**
@@ -96,6 +128,16 @@ class AdminCouponController extends Controller
     public function destroy($id)
     {
         //
+        $coupon = Coupon::findOrFail($id);
+        Session::flash('coupon_message', $coupon->name . ' was deleted!'); //naam om mess. op te halen, VOOR DELETE OFC
+        $coupon->delete();
+        return redirect()->back();
+    }
+    public function restore( $id){
+        coupon::onlyTrashed()->where('id', $id)->restore();
+        Session::flash('coupon_message', 'this coupon was restored and is active again!'); //naam om mess. op te halen, VOOR DELETE OFC
+
+        return redirect('/admin/coupons');
     }
     public function coupon(Request $request)
     {

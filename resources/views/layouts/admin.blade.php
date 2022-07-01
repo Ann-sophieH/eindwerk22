@@ -67,6 +67,7 @@
                         <li class="nav-item ps-3"> <a class="nav-link text-white  p-2" href="{{route('products.index')}}"><b>All products</b></a></li>
                         <li class="nav-item ps-5  "> <a class="nav-link text-white p-2" href="{{route('products.create')}}"><i class="icon-xxs material-icons pe-2" style="font-size: 1.2rem">add</i>new product</a></li>
                         <li class="nav-item ps-5   "> <a class="nav-link text-white p-2" href="{{route('reviews.index')}}"><i class="icon-xxs material-icons pe-2" style="font-size:  1.2rem">reviews</i>reviews</a></li>
+                        <li class="nav-item ps-5   "> <a class="nav-link text-white p-2" href="{{route('coupons.index')}}"><i class="icon-xxs material-icons pe-2" style="font-size:  1.2rem">price_change</i>coupons</a></li>
 
                         <li class="nav-item ps-3"> <a class="nav-link text-white p-2" href="{{route('colors.index')}}"> <b>Colors</b></a></li>
 
@@ -120,7 +121,7 @@
                 </li>
 
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Relation d management </h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Relations management </h6>
             </li>
 
             <li class="nav-item">

@@ -18,7 +18,7 @@ https://preview.colorlib.com/#magdesign
             <div class="row mt-5 mb-5">
                     <h1 class="fs-1 fs-reg text-uppercase text-center">Blog</h1>
             </div>
-
+@if($sticky_post)
         <div class="row p-4 p-md-5 mb-4 text-white rounded bg-gray-600">
             <div class="col-md-6 px-0">
                 <h1 class="display-4 fst-italic fs-bo">{{Str::limit($sticky_post->title, 20, '...')}}</h1>
@@ -31,17 +31,16 @@ https://preview.colorlib.com/#magdesign
                 <button class="btn btn-outline-light br-none my-4" type="submit">
                     <a href="{{route('blogpost', $sticky_post)}}" class="font-pt text-white">Continue Reading </a>
                     <i class="bi bi-arrow-right"></i>
-                </button>            </div>
+                </button>
+            </div>
         </div>
-
+        @endif
         <section class="row catagory-welcome-post-area section_padding_100">
-
                     @foreach($posts as $post )
                         <div class="col-12 col-md-6 mt-auto">
                             <!-- Gazette Welcome Post -->
-                            <div class="gazette-welcome-post my-5 pb-2 p-2">
+                            <article class="gazette-welcome-post my-5 pb-2 p-2">
                                 <!-- Post Tag -->
-
                                 <h2 class="font-pt fs-bo">{{Str::limit($post->title, 20, '...')}}</h2>
                                 <p class="gazette-post-date fs-li"><i>{{$post->created_at->diffForHumans()}}</i> by {{$post->user->first_name}}  {{$post->user->last_name}}</p>
                                 <div class="gazette-post-tag">
@@ -72,7 +71,7 @@ https://preview.colorlib.com/#magdesign
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                     @endforeach
 

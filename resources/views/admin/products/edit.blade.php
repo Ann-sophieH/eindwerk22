@@ -99,7 +99,7 @@
 
                                         <div class="form-check " id="category"  multiple>
                                             @foreach($categories as $category)
-                                                <input class="form-check-input" type="radio" name="category" value="{{$category->id}}" id="flexRadio{{$category->id}}"
+                                                <input class="form-check-input" type="radio" name="category_id" value="{{$category->id}}" id="flexRadio{{$category->id}}"
                                                        @if($product->category_id == $category->id) checked @endif>
                                                 <label class="form-check-label" for="flexRadio{{$category->id}}">
                                                     {{$category->name}}

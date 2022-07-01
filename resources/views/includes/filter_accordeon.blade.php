@@ -44,9 +44,9 @@
 
                             @foreach($colors  as $color)
                             <div class="form-check form-option text-center mb-2 mx-1" style="width: 4rem;">
-                                <input wire:model="colorsfilter.{{ $color->name }}" type="checkbox" id="colour_sidebar_{{$color->name}}"
+                                <input wire:model="colorsfilter.{{ $color->name }}" type="checkbox" id="colour_sidebar_{{$color->id}}"
                                        class="form-check-input shadow-none">
-                            <label class="btn-colour form-option-label rounded-circle p-1" for="colour_sidebar_{{$color->name}}"
+                            <label class="btn-colour form-option-label rounded-circle p-1" for="colour_sidebar_{{$color->id}}"
                                     style="background-color: {{$color->hex_value}};"  ><span class="form-option-color rounded-circle" style="background-color:  rgb(84, 81, 66);"></span></label>
 
                             </div>
@@ -54,89 +54,6 @@
                         </section>
                 </div>
             </div>
-
-<!--        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-                <button aria-controls="collapseOne" aria-expanded="false" class="accordion-button shadow-none"
-                        data-bs-target="#collapseOne"
-                        data-bs-toggle="collapse" type="button"> Filter all products by type
-                </button>
-            </h2>
-            <div aria-labelledby="headingOne" class="accordion-collapse collapse "
-                 data-bs-parent="#accordionExample"
-                 id="collapseOne">
-                <div class="accordion-body mp-none p-2">
-                    <ul class="list-unstyled ps-0">
-                        <li class="mb-1">
-                            <button aria-expanded="true" class="btn btn-toggle collapsed shadow-none" data-bs-target="#home-collapse" data-bs-toggle="collapse">
-                                Headphones
-                            </button>
-                            <div class="collapse show" id="home-collapse">
-                                <div class="btn-toggle-nav list-unstyled fw-normal ps-4 small">
-                                    <div class="form-check checkshop">
-                                        <input class="form-check-input shadow-none " id="flexCheckOverEar" type="checkbox"
-                                               value="">
-                                        <label class="form-check-label " for="flexCheckOverEar">
-                                            Over-ear
-                                        </label>
-                                    </div>
-                                    <div class="form-check checkshop">
-                                        <input class="form-check-input shadow-none" id="flexCheckEarphones" type="checkbox"
-                                               value="">
-                                        <label class="form-check-label" for="flexCheckEarphones">
-                                            earphones
-                                        </label>
-                                    </div>
-                                    <div class="form-check checkshop">
-                                        <input class="form-check-input shadow-none" id="flexCheckNoiceC" type="checkbox"
-                                               value="">
-                                        <label class="form-check-label" for="flexCheckNoiceC">
-                                            Noise cancelling
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li class="border-top my-3"></li>
-                        <li class="mb-1">
-                            <button aria-expanded="true"
-                                    class="btn btn-toggle  collapsed shadow-none"
-                                    data-bs-target="#dashboard-collapse" data-bs-toggle="collapse">
-                                Speakers
-                            </button>
-                            <div class="collapse show" id="dashboard-collapse">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal ps-4 small">
-                                    <li class="form-check checkshop">
-                                        <input class="form-check-input shadow-none" id="flexCheckportable" type="checkbox"
-                                               value="">
-                                        <label class="form-check-label" for="flexCheckportable">
-                                            portable
-                                        </label>
-                                    </li>
-                                    <li class="form-check checkshop">
-                                        <input class="form-check-input shadow-none" id="flexCheckHome" type="checkbox"
-                                               value="">
-                                        <label class="form-check-label" for="flexCheckHome">
-                                            Home audio
-                                        </label>
-                                    </li>
-                                    <li class="form-check checkshop">
-                                        <input class="form-check-input shadow-none" id="flexChecksets" type="checkbox"
-                                               value="">
-                                        <label class="form-check-label" for="flexChecksets">
-                                            Speaker sets
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </div>
-            </div>
-        </div>-->
 
 
         <div class="mt-4 mb-2 ">
@@ -148,24 +65,20 @@
             </div>
 
             <div >
-                <div class=" ">
+
                     <div class="range-wrap position-relative" style="width: 90%">
                         <div class="range-value mx-auto mb-4 text-border" id="rangeV">
 
                         </div>
                         <input wire:model.debounce.500ms="maxPrice"  id="range" class="mx-auto " type="range" min="50" max="4000" value="200" step="1"  >
                     </div>
-                </div>
 
             </div>
         </div>
         <button class="btn btn-outline-secondary m-2" type="submit">
             <a href="{{route('products')}}"> Reset filters</a>
         </button>
-
     </div>
-
-
 </aside>
 <script>
     const

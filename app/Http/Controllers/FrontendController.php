@@ -46,9 +46,7 @@ class FrontendController extends Controller
 
         return view('blogpost', compact('post', 'comments'));
     }
-
     public function faq(){
-
         return view('faq');
     }
     public function newsletter(Request $request){
@@ -77,11 +75,9 @@ class FrontendController extends Controller
         return view('details', compact('product', 'specs'));
     }
     public function cart(){
-
         return view('cart');
     }
     public function orderReceived(){
-
         return view('order_received');
     }
     public function checkout(){
@@ -152,7 +148,6 @@ class FrontendController extends Controller
                     ]
                 );
                 $order->address_id = $request->delivery_address_id;
-
             }
                 $order->user_id = $user->id;
                 $order->transaction_code = $payment->id ;
@@ -174,6 +169,8 @@ class FrontendController extends Controller
                 }
                 Session::forget('cart'); // empties only the cart var not entire session
                 Session::forget( 'coupon');
+            //
+            //Mail::to(request('email'))->send(new Newslettermail($data));
             /** add NEW facturation address **/
                 if ($request['fname_recipient'] && $request['faddressline_1'] && $request['faddressline_2']) {
                     $request->validate([

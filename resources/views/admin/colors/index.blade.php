@@ -2,7 +2,9 @@
 @extends('layouts.admin')
 @section('content')
     <div class="col-11 mx-auto">
-        @if(session('color_message'))
+        @include('includes.form_error')
+
+    @if(session('color_message'))
             <div class="alert alert-success opacity-7 alert-dismissible text-white" role="alert">
                 <i class="material-icons ps-3">
                     notifications_active

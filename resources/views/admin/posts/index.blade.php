@@ -79,7 +79,7 @@
                                             </div>
 
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">{{$post->title}}</h6>
+                                                <h6 class="text-xs text-secondary mb-0">{{Str::limit($post->title, 12)}}</h6>
                                             </div>
                                         </div>
                                     </td>
@@ -88,8 +88,6 @@
                                     </td>
                                     <td class="align-middle text-center"><span class="text-secondary text-xs font-weight-bold"><a class="link-info"
                                                 href="{{route('users.show', $post->user->id)}}">{{$post->user->username}}</a></span></td>
-
-
                                     <td class="align-middle text-center">
                                           <span class="badge badge-pill text-secondary text-xs font-weight-bold @if($post->active === 1 ) bg-gradient-faded-success @else bg-gradient-faded-secondary @endif">
                                                   {{$post->active ? 'Active' : 'Not Active'}}
@@ -116,15 +114,11 @@
                                                         class="fa fa-edit mt-3"></i></a>
                                                 <button class="btn  mt-2 ps-5 text-danger" type="submit"><i
                                                         class="fa fa-close "></i></button>
-
                                             </form>
-
-
                                         @endif
                                     </td>
                                 </tr>
                             @endforeach
-
                             </tbody>
                         </table>
                     </div>

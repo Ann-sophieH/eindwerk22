@@ -17,20 +17,16 @@ class Counter extends Component
     ];
     public function mount(): void
     {
-
         $cart = Session::has('cart') ? Session::get('cart'):null;
         if($cart){ //to solve reading property on null
             $this->cartTotal = $cart->totalQuantity;
         }
-
     }
-
     public function updateCartTotal(): void
     {
         $cart = Session::has('cart') ? Session::get('cart'):null;
         $this->cartTotal = $cart->totalQuantity;
     }
-
     public function render()
     {
         return <<<'blade'

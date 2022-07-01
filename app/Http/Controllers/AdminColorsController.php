@@ -111,7 +111,7 @@ class AdminColorsController extends Controller
         $color->name = $request->name;
         $color->hex_value = $request->hex_value;
         $color->update();
-        Session::flash('color_message', $color->name . ' was edited and saved!'); //naam om mess. op te halen, VOOR DELETE OFC
+        Session::flash('color_message', $color->name . ' was edited and saved!');
 
         return redirect('/admin/colors/');
     }

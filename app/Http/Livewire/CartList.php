@@ -31,7 +31,6 @@ class CartList extends Component
 
         Session::put('cart', $cart);
     }
-
     public function removeItem($id){
         $oldCart = Session::has('cart') ? Session::get('cart'):null;
         $cart = new Cart($oldCart);
@@ -47,7 +46,6 @@ class CartList extends Component
     {
             $currentCart = Session::has('cart') ? Session::get('cart') : null;
             $cart = new Cart($currentCart); //nieuw model cart vullen
-     //   dd($cart->quantity);
             return view('livewire.cart-list', [
                 'totalPrice'=> $cart->totalPrice,
                 'totalQuantity'=> $cart->totalQuantity,

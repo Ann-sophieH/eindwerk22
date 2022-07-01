@@ -27,10 +27,10 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @var string
      */
-   // protected $redirectTo = RouteServiceProvider::HOME;
-    protected function redirectTo(){
-        return redirect(Request::session()->get('url.intended') ?? '/') ;
-    }
+   protected $redirectTo = RouteServiceProvider::HOME;
+   /* protected function redirectTo(){ errors at strange times
+        //return redirect(Request::session()->get('url.intended') ?? '/') ;
+    }*/
 
     /**
      * Create a new controller instance.
